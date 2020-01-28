@@ -50,7 +50,7 @@
     $('#navbar-main li.nav-item a').on('click', function (event) {
         // Store requested URL hash.
         var hash = this.hash;
-
+        
         // If we are on the homepage and the navigation bar link is to a homepage section.
         if (hash && $(hash).length && ($("#homepage").length > 0)) {
             // Prevent default click behavior.
@@ -62,6 +62,14 @@
                 scrollTop: $(hash).offset().top - navbar_offset
             }, 800);
         }
+
+
+        setTimeout(() => {
+            $('#navbar-main li.nav-item').each(function (){
+                $(this).removeClass('active');
+            })
+            $(this).parents('li.nav-item').addClass('active'); 
+        }, 1000);
     });
 
     /**
