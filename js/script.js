@@ -43,10 +43,11 @@
 
     // Check for hash change event and fix responsive offset for hash links (e.g. Markdown footnotes).
     window.addEventListener("hashchange", scrollToAnchor);
-
+    
     /**
      * Add smooth scrolling to all links inside the main navbar.
      */
+
     $('#navbar-main li.nav-item a').on('click', function (event) {
         // Store requested URL hash.
         var hash = this.hash;
@@ -61,14 +62,31 @@
             $('html, body').animate({
                 scrollTop: $(hash).offset().top - navbar_offset
             }, 800);
+            
         }
-        setTimeout(function(){
-            $('#navbar-main li.nav-item').each(function (){
-                $(this).removeClass('active');
-            })
-            $(item).parents('li.nav-item').addClass('active'); 
-         }, 1000);
+        function random_no(){
+            
+            item.parents('li.nav-item').siblings().removeClass('active');
+            item.parents('li.nav-item').addClass('active');
+       }
+                  
+        var intervalID = window.setInterval(function(){
+            /// call your function here
+            random_no();
+        }, 10);
 
+        setTimeout(function () { clearInterval(intervalID); }, 1000);
+
+        setTimeout(function(){
+            // $('#navbar-main li.nav-item').each(function (){
+            //     $(this).removeClass('active');
+            // })
+            item.parents('li.nav-item').siblings().removeClass('active');
+            item.parents('li.nav-item').addClass('active');
+        }, 1000);
+    });
+    $(document).on('resize', function(){
+        var hash = this.hash;
     });
 
     /**
