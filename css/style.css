@@ -849,7 +849,8 @@ footer p {
     min-height: 48px !important
 }
 
-.navbar .nav-item {
+.navbar .nav-item,
+.navbar .nav-item2{
     text-align: center;
 }
 
@@ -1010,6 +1011,10 @@ nav#navbar-main li {
 
     .collapse.in {
         display: block !important
+    }
+    #theme-change{
+        text-align: center;
+        width: 100%;
     }
 }
 
