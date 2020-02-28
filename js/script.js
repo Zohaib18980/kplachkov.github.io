@@ -48,7 +48,7 @@
      * Add smooth scrolling to all links inside the main navbar.
      */
 
-    $('#navbar-main li.nav-item a').on('click', function (event) {
+    $('#navbar-main li.nav-item:not(:last-child) a').on('click', function (event) {
         // Store requested URL hash.
         var hash = this.hash;
         var item = $(this);
@@ -74,13 +74,12 @@
             /// call your function here
             random_no();
         }, 10);
-
+        // this script run for 1 second just during animation
         setTimeout(function () { clearInterval(intervalID); }, 1000);
-
+        
+        // this script run after 1 second just after animation stop
         setTimeout(function(){
-            // $('#navbar-main li.nav-item').each(function (){
-            //     $(this).removeClass('active');
-            // })
+            
             item.parents('li.nav-item').siblings().removeClass('active');
             item.parents('li.nav-item').addClass('active');
         }, 1000);
